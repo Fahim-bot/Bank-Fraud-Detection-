@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fraud Detection System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-glow glow-1"></div>
+  <div class="background-glow glow-2"></div>
+
+  <main class="page">
+    <section class="hero-card">
+      <div class="badge">Machine Learning Project</div>
+      <h1>Fraud Detection System</h1>
+      <p class="subtitle">
+        Analyze transaction behavior using amount, frequency, and location-based anomaly indicators.
+      </p>
+
+      <div class="status-bar">
+        <div class="status-item">
+          <span class="status-label">Model Type</span>
+          <strong>Random Forest</strong>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Detection</span>
+          <strong>Real-Time</strong>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Risk Output</span>
+          <strong>Low / Medium / High</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="app-grid">
+      <div class="form-card">
+        <h2>Transaction Details</h2>
+        <form id="fraudForm" class="fraud-form">
+          <div class="input-grid">
+            <label>
+              <span>Amount</span>
+              <input type="number" id="amount" step="0.01" placeholder="4500" required />
+            </label>
+            <label>
+              <span>Hour of Day</span>
+              <input type="number" id="hour_of_day" min="0" max="23" placeholder="3" required />
+            </label>
+            <label>
+              <span>Day of Week</span>
+              <input type="number" id="day_of_week" min="0" max="6" placeholder="6" required />
+            </label>
+            <label>
+              <span>Hours Since Last Transaction</span>
+              <input type="number" id="hours_since_last_txn" step="0.01" placeholder="0.5" required />
+            </label>
+            <label>
+              <span>Transaction Count in 24 Hours</span>
+              <input type="number" id="txn_count_24h" placeholder="5" required />
+            </label>
+            <label>
+              <span>Transaction Count in 7 Days</span>
+              <input type="number" id="txn_count_7d" placeholder="25" required />
+            </label>
+            <label>
+              <span>Amount Deviation</span>
+              <input type="number" id="amount_deviation" step="0.01" placeholder="4.5" required />
+            </label>
+            <label>
+              <span>Is High Amount</span>
+              <select id="is_high_amount" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+            <label>
+              <span>Is Unusual Location</span>
+              <select id="is_unusual_location" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+            <label>
+              <span>Location Changed</span>
+              <select id="location_changed" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="button-row">
+            <button type="submit" class="primary-btn">Run Fraud Check</button>
+            <button type="button" class="secondary-btn" id="fillSampleBtn">Load Sample Fraud Case</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="result-card">
+        <h2>Prediction Output</h2>
+        <div id="result" class="result-panel idle">
+          <p class="result-title">Awaiting analysis</p>
+          <p class="result-text">Submit transaction details to view fraud probability and risk classification.</p>
+        </div>
+
+        <div class="info-card">
+          <h3>How to interpret</h3>
+          <ul>
+            <li><strong>Low:</strong> probability below 0.30</li>
+            <li><strong>Medium:</strong> probability from 0.30 to 0.69</li>
+            <li><strong>High:</strong> probability 0.70 and above</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
